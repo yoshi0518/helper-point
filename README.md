@@ -1,4 +1,4 @@
-# Next.js Template
+# Helper Point
 
 ## 開発環境準備
 

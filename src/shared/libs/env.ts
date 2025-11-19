@@ -2,12 +2,13 @@ import { z } from 'zod';
 
 const envSchema = z.object({
   DEBUG: z.string().transform((value) => value === 'true'),
+  AUTH_GOOGLE_ID: z.string(),
+  AUTH_GOOGLE_SECRET: z.string(),
+  AUTH_SECRET: z.string(),
   NEON_DATABASE_URL: z.string(),
   RESEND_API_KEY: z.string(),
   RESEND_FROM: z.string(),
   RESEND_ADMIN: z.string(),
-  MICROCMS_SERVICE_DOMAIN: z.string(),
-  MICROCMS_API_KEY: z.string(),
   NEXT_PUBLIC_RECAPTCHA_SITE_KEY: z.string(),
   RECAPTCHA_SECRET_KEY: z.string(),
   NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID: z.string(),
@@ -15,6 +16,9 @@ const envSchema = z.object({
 
 const parsedEnv = envSchema.safeParse({
   DEBUG: process.env.DEBUG,
+  AUTH_GOOGLE_ID: process.env.AUTH_GOOGLE_ID,
+  AUTH_GOOGLE_SECRET: process.env.AUTH_GOOGLE_SECRET,
+  AUTH_SECRET: process.env.AUTH_SECRET,
   NEON_DATABASE_URL: process.env.NEON_DATABASE_URL,
   RESEND_API_KEY: process.env.RESEND_API_KEY,
   RESEND_FROM: process.env.RESEND_FROM,
