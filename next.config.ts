@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
         },
         {
           key: 'Access-Control-Allow-Origin',
-          value: 'https://xxxxx',
+          value: 'https://helper-point.yoshi0518.com',
         },
       ],
     },
