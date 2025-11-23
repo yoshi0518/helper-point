@@ -2,9 +2,12 @@ import { z } from 'zod';
 
 const envSchema = z.object({
   DEBUG: z.string().transform((value) => value === 'true'),
+  APP_TITLE: z.string(),
+  APP_URL: z.string(),
   AUTH_GOOGLE_ID: z.string(),
   AUTH_GOOGLE_SECRET: z.string(),
   AUTH_SECRET: z.string(),
+  AUTH_MAIL_LIST: z.string(),
   NEON_DATABASE_URL: z.string(),
   RESEND_API_KEY: z.string(),
   RESEND_FROM: z.string(),
@@ -16,9 +19,12 @@ const envSchema = z.object({
 
 const parsedEnv = envSchema.safeParse({
   DEBUG: process.env.DEBUG,
+  APP_TITLE: process.env.APP_TITLE,
+  APP_URL: process.env.APP_URL,
   AUTH_GOOGLE_ID: process.env.AUTH_GOOGLE_ID,
   AUTH_GOOGLE_SECRET: process.env.AUTH_GOOGLE_SECRET,
   AUTH_SECRET: process.env.AUTH_SECRET,
+  AUTH_MAIL_LIST: process.env.AUTH_MAIL_LIST,
   NEON_DATABASE_URL: process.env.NEON_DATABASE_URL,
   RESEND_API_KEY: process.env.RESEND_API_KEY,
   RESEND_FROM: process.env.RESEND_FROM,
