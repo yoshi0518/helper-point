@@ -7,6 +7,7 @@ import type { Account, NextAuthConfig, Profile } from 'next-auth';
 
 const authConfig: NextAuthConfig = {
   providers: [GoogleProvider],
+  trustHost: true,
   pages: {
     signIn: '/login',
     error: '/error',

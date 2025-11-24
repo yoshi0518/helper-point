@@ -8,7 +8,7 @@ import { Button } from '@/shared/components/ui/button';
 export const LoginButtonComponent = () => (
   <Button
     className="w-full cursor-pointer"
-    onClick={() => signIn('google')}
+    onClick={() => signIn('google', { callbackUrl: '/' })}
   >
     <FaGoogle />
     ログイン
