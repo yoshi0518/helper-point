@@ -1,3 +1,5 @@
+import { env } from './src/shared/libs/env';
+
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
@@ -15,11 +17,20 @@ const nextConfig: NextConfig = {
         },
         {
           key: 'Access-Control-Allow-Origin',
-          value: 'https://helper-point.yoshi0518.com',
+          value: env.APP_URL,
         },
       ],
     },
   ],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        pathname: '/**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;

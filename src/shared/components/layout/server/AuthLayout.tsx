@@ -1,7 +1,34 @@
-export const AuthLayout = ({
+import { HeaderComponent } from '@/shared/components/layout/client/HeaderComponent';
+import { SidebarComponent } from '@/shared/components/layout/client/SidebarComponent';
+import { auth } from '@/shared/libs/auth';
+import { env } from '@/shared/libs/env';
+
+export const AuthLayout = async ({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  return <div className="flex min-h-screen bg-blue-50">{children}</div>;
+  const session = await auth();
+
+  if (env.DEBUG) {
+    console.log('=== AuthLayout ===');
+    console.log('session', session);
+    console.log(session?.user?.image);
+  }
+
+  return (
+    <div className="flex min-h-screen bg-blue-50">
+      <SidebarComponent />
+      <div className="flex w-full">
+        <div className="w-full">
+          <HeaderComponent
+            name={session?.user?.name || ''}
+            email={session?.user?.email || ''}
+            image={session?.user?.image || ''}
+          />
+          {children}
+        </div>
+      </div>
+    </div>
+  );
 };
