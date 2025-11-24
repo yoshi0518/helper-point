@@ -12,13 +12,13 @@ const envSchema = z.object({
   RESEND_API_KEY: z.string(),
   RESEND_FROM: z.string(),
   RESEND_ADMIN: z.string(),
-  NEXT_PUBLIC_RECAPTCHA_SITE_KEY: z.string(),
+  RECAPTCHA_SITE_KEY: z.string(),
   RECAPTCHA_SECRET_KEY: z.string(),
-  NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID: z.string(),
+  GOOGLE_TAG_MANAGER_ID: z.string(),
 });
 
 const parsedEnv = envSchema.safeParse({
-  DEBUG: process.env.DEBUG,
+  DEBUG: process.env.NEXT_PUBLIC_DEBUG,
   APP_TITLE: process.env.APP_TITLE,
   APP_URL: process.env.APP_URL,
   AUTH_GOOGLE_ID: process.env.AUTH_GOOGLE_ID,
@@ -31,9 +31,9 @@ const parsedEnv = envSchema.safeParse({
   RESEND_ADMIN: process.env.RESEND_ADMIN,
   MICROCMS_SERVICE_DOMAIN: process.env.MICROCMS_SERVICE_DOMAIN,
   MICROCMS_API_KEY: process.env.MICROCMS_API_KEY,
-  NEXT_PUBLIC_RECAPTCHA_SITE_KEY: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+  RECAPTCHA_SITE_KEY: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
   RECAPTCHA_SECRET_KEY: process.env.RECAPTCHA_SECRET_KEY,
-  NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID: process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID,
+  GOOGLE_TAG_MANAGER_ID: process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID,
 });
 
 if (!parsedEnv.success) {

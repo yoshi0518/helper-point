@@ -24,7 +24,7 @@ export const RootLayout = ({
       className={cn(notoSansJP.className, 'select-none text-gray-900')}
     >
       <body>{children}</body>
-      <GoogleTagManager gtmId={env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID} />
+      <GoogleTagManager gtmId={env.GOOGLE_TAG_MANAGER_ID} />
     </html>
   );
 };

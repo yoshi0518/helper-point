@@ -13,7 +13,6 @@ export const AuthLayout = async ({
   if (env.DEBUG) {
     console.log('=== AuthLayout ===');
     console.log('session', session);
-    console.log(session?.user?.image);
   }
 
   return (
@@ -26,7 +25,7 @@ export const AuthLayout = async ({
             email={session?.user?.email || ''}
             image={session?.user?.image || ''}
           />
-          {children}
+          <main className="mx-auto max-w-6xl">{children}</main>
         </div>
       </div>
     </div>
