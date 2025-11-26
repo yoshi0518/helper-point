@@ -1,6 +1,6 @@
 'use client';
 
-import { LogOut } from 'lucide-react';
+import { LogOut, Menu } from 'lucide-react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
@@ -15,6 +15,7 @@ import {
 } from '@/shared/components/ui/dropdown-menu';
 import { menuItems } from '@/shared/constants';
 import { env } from '@/shared/libs/env-client';
+import { useSidebarStore } from '@/shared/stores';
 
 type HeaderComponentProps = {
   name: string;
@@ -26,6 +27,7 @@ export const HeaderComponent = ({ name, email, image }: HeaderComponentProps) =>
   const pathname = usePathname();
   const menu = menuItems.find((menu) => menu.href === pathname);
   const Icon = menu?.icon;
+  const { toggleSidebarOpen } = useSidebarStore();
 
   if (env.DEBUG) {
     console.log('=== HeaderComponent ===');
@@ -34,8 +36,12 @@ export const HeaderComponent = ({ name, email, image }: HeaderComponentProps) =>
   }
 
   return (
-    <header className="flex items-center justify-between bg-blue-500 px-4 py-2">
-      <div className="flex items-center gap-2 font-bold text-white">
+    <header className="flex items-center justify-between border-b bg-white px-4 py-2 shadow-sm">
+      <div className="flex items-center gap-2 font-bold text-black">
+        <Menu
+          className="h-5 w-5 cursor-pointer md:hidden"
+          onClick={toggleSidebarOpen}
+        />
         {Icon && <Icon className="h-5 w-5" />}
         {menu?.label}
       </div>

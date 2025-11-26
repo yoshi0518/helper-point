@@ -1,7 +1,7 @@
 import { HeaderComponent } from '@/shared/components/layout/client/HeaderComponent';
 import { SidebarComponent } from '@/shared/components/layout/client/SidebarComponent';
 import { auth } from '@/shared/libs/auth';
-import { env } from '@/shared/libs/env';
+import { env } from '@/shared/libs/env-client';
 
 export const AuthLayout = async ({
   children,
@@ -16,16 +16,18 @@ export const AuthLayout = async ({
   }
 
   return (
-    <div className="flex min-h-screen bg-blue-50">
+    <div className="flex h-screen overflow-hidden bg-blue-50">
       <SidebarComponent />
-      <div className="flex w-full">
-        <div className="w-full">
+      <div className="flex w-full md:ml-56">
+        <div className="flex w-full flex-col overflow-y-auto">
           <HeaderComponent
             name={session?.user?.name || ''}
             email={session?.user?.email || ''}
             image={session?.user?.image || ''}
           />
-          <main className="mx-auto max-w-6xl">{children}</main>
+          <main className="flex-1 bg-blue-50">
+            <div className="mx-auto max-w-6xl p-4 md:p-8">{children}</div>
+          </main>
         </div>
       </div>
     </div>

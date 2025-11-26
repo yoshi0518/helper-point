@@ -1,3 +1,7 @@
 export const HomeTemplate = async () => {
-  return <div>メインコンテンツ</div>;
+  return (
+    <>
+      <div>HomeTemplate</div>
+    </>
+  );
 };
