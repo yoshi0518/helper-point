@@ -1,7 +1,1 @@
-export const PointsTemplate = async () => {
-  return (
-    <>
-      <div>PointsTemplate</div>
-    </>
-  );
-};
+export const PointsTemplate = async () => <div>PointsTemplate</div>;
