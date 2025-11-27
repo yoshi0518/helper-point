@@ -18,7 +18,7 @@ export const AuthLayout = async ({
   }
 
   return (
-    <div className="flex h-screen overflow-hidden bg-blue-50">
+    <div className="flex h-screen overflow-hidden bg-gray-50">
       <SidebarComponent />
       <div className="flex w-full md:ml-56">
         <div className="flex w-full flex-col overflow-y-auto">
@@ -28,7 +28,7 @@ export const AuthLayout = async ({
             image={session?.user?.image || ''}
             notFound={notFound}
           />
-          <main className="flex-1 bg-blue-50">
+          <main className="flex-1">
             <div className="mx-auto flex max-w-6xl justify-center p-4 md:p-8">{children}</div>
           </main>
         </div>

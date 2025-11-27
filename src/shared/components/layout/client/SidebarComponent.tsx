@@ -9,11 +9,13 @@ import { ScrollArea } from '@/shared/components/ui/scroll-area';
 import { menuItems } from '@/shared/constants';
 import { env } from '@/shared/libs/env-client';
 import { cn } from '@/shared/libs/utils';
-import { useSidebarStore } from '@/shared/stores';
+import { useResponsiveStore, useSidebarStore } from '@/shared/stores';
 
 export const SidebarComponent = () => {
   const pathname = usePathname();
   const { sidebarOpen, setSidebarOpen } = useSidebarStore();
+  const { setWidth } = useResponsiveStore();
+
   if (env.DEBUG) {
     console.log('=== SidebarComponent ===');
     console.log('pathname', pathname);
@@ -41,6 +43,7 @@ export const SidebarComponent = () => {
       if (window.innerWidth >= 768) {
         setSidebarOpen(false);
       }
+      setWidth(window.innerWidth);
     };
 
     // 初回実行
@@ -53,7 +56,7 @@ export const SidebarComponent = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [setSidebarOpen]);
+  }, [setSidebarOpen, setWidth]);
 
   return (
     <>
