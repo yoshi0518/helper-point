@@ -1,7 +1,1 @@
-export const SettingsTemplate = async () => {
-  return (
-    <>
-      <div>SettingsTemplate</div>
-    </>
-  );
-};
+export const SettingsTemplate = async () => <div>SettingsTemplate</div>;

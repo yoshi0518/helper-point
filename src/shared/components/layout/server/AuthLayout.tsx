@@ -5,8 +5,10 @@ import { env } from '@/shared/libs/env-client';
 
 export const AuthLayout = async ({
   children,
+  notFound = false,
 }: Readonly<{
   children: React.ReactNode;
+  notFound?: boolean;
 }>) => {
   const session = await auth();
 
@@ -24,9 +26,10 @@ export const AuthLayout = async ({
             name={session?.user?.name || ''}
             email={session?.user?.email || ''}
             image={session?.user?.image || ''}
+            notFound={notFound}
           />
           <main className="flex-1 bg-blue-50">
-            <div className="mx-auto max-w-6xl p-4 md:p-8">{children}</div>
+            <div className="mx-auto flex max-w-6xl justify-center p-4 md:p-8">{children}</div>
           </main>
         </div>
       </div>

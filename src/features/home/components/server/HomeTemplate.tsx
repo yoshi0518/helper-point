@@ -1,7 +1,1 @@
-export const HomeTemplate = async () => {
-  return (
-    <>
-      <div>HomeTemplate</div>
-    </>
-  );
-};
+export const HomeTemplate = async () => <div>HomeTemplate</div>;

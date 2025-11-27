@@ -1,6 +1,6 @@
 'use client';
 
-import { LogOut, Menu } from 'lucide-react';
+import { BadgeAlert, LogOut, Menu } from 'lucide-react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
@@ -21,9 +21,10 @@ type HeaderComponentProps = {
   name: string;
   email: string;
   image: string;
+  notFound?: boolean;
 };
 
-export const HeaderComponent = ({ name, email, image }: HeaderComponentProps) => {
+export const HeaderComponent = ({ name, email, image, notFound = false }: HeaderComponentProps) => {
   const pathname = usePathname();
   const menu = menuItems.find((menu) => menu.href === pathname);
   const Icon = menu?.icon;
@@ -33,6 +34,7 @@ export const HeaderComponent = ({ name, email, image }: HeaderComponentProps) =>
     console.log('=== HeaderComponent ===');
     console.log('pathname', pathname);
     console.log('menu', menu);
+    console.log('notFound', notFound);
   }
 
   return (
@@ -42,8 +44,14 @@ export const HeaderComponent = ({ name, email, image }: HeaderComponentProps) =>
           className="h-5 w-5 cursor-pointer md:hidden"
           onClick={toggleSidebarOpen}
         />
+        {notFound && (
+          <>
+            <BadgeAlert className="h-5 w-5" />
+            <span>Page Not Found</span>
+          </>
+        )}
         {Icon && <Icon className="h-5 w-5" />}
-        {menu?.label}
+        <span>{menu?.label}</span>
       </div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

@@ -1,7 +1,1 @@
-export const HelpersTemplate = async () => {
-  return (
-    <>
-      <div>HelpersTemplate</div>
-    </>
-  );
-};
+export const HelpersTemplate = async () => <div>HelpersTemplate</div>;
